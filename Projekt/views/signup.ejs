@@ -11,7 +11,7 @@
     <div class="container h-100">
         <div class="row h-100 justify-content-center align-content-center">
             <div class="col-lg-10 col-auto">
-                <form>
+                <form action="/signup" method="POST">
                     <fieldset>
                         <legend>Sign up</legend>
                         <!--
@@ -21,13 +21,13 @@
                         <div class="row d-lg-flex d-none"> 
                             <div class="col-6">
                                 <div class="mb-3 form-floating">
-                                    <input type="text" class="form-control" id="forenameInput" placeholder="">
+                                    <input type="text" class="form-control" id="forenameInput" placeholder="" name="vorname">
                                     <label for="forenameInput" class="form-label">Vorname</label>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="mb-3 form-floating">
-                                    <input type="text" id="surnameInput" class="form-control" placeholder="">
+                                    <input type="text" id="surnameInput" class="form-control" placeholder="" name="nachname">
                                     <label for="surnameInput" class="form-label">Nachname</label>
                                 </div>
                             </div>
@@ -36,13 +36,13 @@
                         <div class="row d-lg-flex d-none">
                             <div class="col-6">
                                 <div class="mb-3 form-floating">
-                                    <input type="text" class="form-control" id="usernameInput" placeholder="">
+                                    <input type="text" class="form-control" id="usernameInput" placeholder="" name="benutzername">
                                     <label for="usernameInput" class="form-label">Benutzername</label>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="mb-3 form-floating">
-                                    <input type="email" class="form-control" id="emailInput" placeholder="">
+                                    <input type="email" class="form-control" id="emailInput" placeholder="" name="email">
                                     <label for="emailInput" class="form-label">Email</label>
                                 </div>
                             </div>
@@ -51,14 +51,14 @@
                         <div class="row d-lg-flex d-none">
                             <div class="col-6">
                                 <div class="mb-3 form-floating">
-                                    <input type="password" id="passwordInput" class="form-control" placeholder="" onblur="validateOriginalPasswordLgInput()">
+                                    <input type="password" id="passwordInput" class="form-control" placeholder="" onblur="validateOriginalPasswordLgInput()" name="password">
                                     <div class="form-text">8 oder mehr Zeichen</div>
                                     <label for="passwordInput" class="form-label">Passwort</label>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="mb-3 form-floating">
-                                    <input type="password" id="passwordValidationInput" class="form-control" placeholder="" onblur="validateValidationPasswordLgInput()">
+                                    <input type="password" id="passwordValidationInput" class="form-control" placeholder="" onblur="validateValidationPasswordLgInput()" name="passwordWiederholt">
                                     <div class="form-text">Passwort wiederholen</div>
                                     <label for="passwordValidationInput" class="form-label">Passwort wiederholen</label>
                                 </div>

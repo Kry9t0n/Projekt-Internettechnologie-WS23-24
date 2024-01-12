@@ -10,15 +10,15 @@
     <div class="container h-100">
         <div class="row h-100 justify-content-center align-content-center">
             <div class="col-auto">
-                <form>
+                <form action="/login" method="POST">
                     <fieldset class="form">
                         <legend>Login</legend>
                         <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="EmailInput" placeholder="">
+                            <input type="email" class="form-control" id="EmailInput" placeholder="" name="email">
                             <label for="EmailInput" class="form-label">Email</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="password" class="form-control" id="passwdInput" placeholder="">
+                            <input type="password" class="form-control" id="passwdInput" placeholder="" name="password">
                             <label for="passwdInput" class="form-label">Passwort</label>
                         </div>
                         <button type="submit" class="btn btn-primary">Login</button>
