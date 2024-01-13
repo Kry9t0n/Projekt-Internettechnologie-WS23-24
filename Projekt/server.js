@@ -13,7 +13,8 @@ const uploadRoute = require("./routes/upload")
 
 app.set("view-engine", "ejs")
 app.use(express.urlencoded({extended:false}))
-
+//Statischer Pfad um auf die Bilder zuzugreifen 
+app.use('/images', express.static(path.join(__dirname, 'images')));
 
 app.use("/login", loginRoute);
 app.use("/signup", signupRoute);
