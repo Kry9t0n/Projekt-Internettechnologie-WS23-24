@@ -45,7 +45,7 @@ router.post("/", async (req,res) => {
                 UserInfo.userID = result[0].userId;
                 UserInfo.benutzername = result[0].benutzername;
                 console.log(UserInfo);
-                res.redirect('/');
+                res.redirect('/benutzerHome');
             } else {
                 // Email oder Passwort sind falsch
                 res.status(401).send("Ungültige Anmeldeinformationen");
