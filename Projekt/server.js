@@ -6,10 +6,12 @@ const UserInfo = require('./userInfo.js');
 const upload = require('./multer_config');
 
 
+
 const loginRoute = require("./routes/login")
 const signupRoute = require("./routes/signup")
 const benutzerHomeRoute = require("./routes/benutzer_home")
 const uploadRoute = require("./routes/upload")
+const deleteRoute = require("./routes/delete")
 
 app.set("view-engine", "ejs")
 app.use(express.urlencoded({extended:false}))
@@ -23,6 +25,7 @@ app.use("/login", loginRoute);
 app.use("/signup", signupRoute);
 app.use("/benutzerHome", benutzerHomeRoute);
 app.use("/upload", uploadRoute);
+app.use("/delete", deleteRoute);
 
 
 app.get("/",(req,res) => {
