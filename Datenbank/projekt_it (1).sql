@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 13. Jan 2024 um 14:03
+-- Erstellungszeit: 14. Jan 2024 um 14:09
 -- Server-Version: 10.4.32-MariaDB
 -- PHP-Version: 8.2.12
 
@@ -40,7 +40,13 @@ CREATE TABLE `images` (
 
 INSERT INTO `images` (`idImages`, `filename`, `path`, `idUser`) VALUES
 (1, '1705150901574.JPG', 'images\\3\\1705150901574.JPG', 3),
-(2, '1705150958730.JPG', 'images\\1\\1705150958730.JPG', 1);
+(3, '1705151736742.JPG', 'images\\3\\1705151736742.JPG', 3),
+(4, '1705151740333.JPG', 'images\\3\\1705151740333.JPG', 3),
+(5, '1705151744848.JPG', 'images\\3\\1705151744848.JPG', 3),
+(6, '1705152863874.JPG', 'images\\3\\1705152863874.JPG', 3),
+(7, '1705152869212.JPG', 'images\\3\\1705152869212.JPG', 3),
+(8, '1705152874398.JPG', 'images\\3\\1705152874398.JPG', 3),
+(13, '1705232062512.JPG', 'images\\1\\1705232062512.JPG', 1);
 
 -- --------------------------------------------------------
 
@@ -91,7 +97,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT für Tabelle `images`
 --
 ALTER TABLE `images`
-  MODIFY `idImages` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idImages` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT für Tabelle `users`
