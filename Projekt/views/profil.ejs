@@ -1,0 +1,74 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/navbar-elem-hover.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" defer></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-md bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><img src="../media/bildbearbeitung.png" alt="Logo" height="50" width="50"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Zeige Navbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar">
+                <div class="navbar-nav">
+                    <a class="nav-link" href="#">Home</a>
+                    <a class="nav-link" href="#">Upload</a>
+                    <a class="nav-link active" aria-current="page" href="#">Profil</a>
+                </div>
+                <div class="navbar-nav ms-auto">
+                    <a class="nav-link" href="#"><button class="btn btn-danger">Abmelden</button></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!--Uebersicht-->
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1>Profil&uuml;bersicht</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <th>Vorname</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Benutzername</th>
+                        <th>Passwort</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td id="vorname"></td>
+                            <td id="name"></td>
+                            <td id="email"></td>
+                            <td id="benutzername"></td>
+                            <td id="passwort"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!--Footer-->
+    <footer class="container mt-5">
+        <p class="float-end">
+            <a href="#">Zur&uuml;ck nach oben</a>
+        </p>
+        <p>
+            © 2023
+        </p>
+        <p>
+            <a href="https://www.flaticon.com/de/kostenlose-icons/photoshop" title="photoshop Icons">Photoshop Icons erstellt von Smashicons - Flaticon</a>
+        </p>
+    </footer>
+</body>
+</html> 
