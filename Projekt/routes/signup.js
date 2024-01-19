@@ -28,19 +28,22 @@ router.post("/", async (req,res) => {
     db.query(checkBenutzer, checkValues, (err, result) => {
         if (err) {
             console.error("Fehler beim Überprüfen des Benutzernamens: " + err.message);
-            return res.status(500).send("Fehler beim Überprüfen des Benutzernamens");
+            res.render("signup.ejs",{ message: "Fehler beim Überprüfen des Benutzernamens"})
+            //return res.status(500).send("Fehler beim Überprüfen des Benutzernamens");
         }
 
         if (result[0]['COUNT(*)'] > 0) {
             // Benutzername existiert bereits
-            return res.status(409).send("Die Email wird bereits verwendet");
+            res.render("signup.ejs",{ message: "Die Email wird bereits verwendet"})
+            //return res.status(409).send("Die Email wird bereits verwendet");
         }
 
         // Benutzer registiert   
         db.query(insertQuery, insertValues, (err, result) => {
             if (err) {
                 console.error("Fehler beim Einfügen der Daten: " + err.message);
-                return res.status(500).send("Fehler beim Einfügen der Daten");
+                res.render("signup.ejs",{ message: "Fehler beim Einfügen der Daten"})
+                //return res.status(500).send("Fehler beim Einfügen der Daten");
             }
             // Erfolgreich registiert
             console.log("Datensatz eingefügt: " + result.affectedRows + " Zeile(n) betroffen");

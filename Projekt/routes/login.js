@@ -25,18 +25,21 @@ router.post("/", async (req,res) => {
     db.query(checkEmail, checkEmailValues, (err, emailResult) => {
         if (err) {
             console.error("Fehler bei der Überprüfung der Email: " + err.message);
-            return res.status(500).send("Fehler bei der Überprüfung der Email");
+            res.render("login.ejs",{ message: "Fehler bei der Überprüfung der Email"})
+            //return res.status(500).send("Fehler bei der Überprüfung der Email");
         }
 
         if (emailResult.length === 0) {
             // Benutzername existiert nicht
-            return res.status(404).send("Email nicht gefunden");
+            res.render("login.ejs",{ message: "Email nicht gefunden"})
+            //return res.status(404).send("Email nicht gefunden");
         }
         // Benutzer Anmelden
         db.query(checkLogin, checkLoginValues, (err, result) => {
             if (err) {
                 console.error("Fehler bei der Überprüfung der Login-Daten: " + err.message);
-                return res.status(500).send("Fehler bei der Überprüfung der Login-Daten");
+                res.render("login.ejs",{ message: "Fehler bei der Überprüfung der Login-Daten"})
+                //return res.status(500).send("Fehler bei der Überprüfung der Login-Daten");
             }
 
             if (result.length > 0) {
@@ -47,7 +50,9 @@ router.post("/", async (req,res) => {
                 res.redirect('/benutzerHome');
             } else {
                 // Email oder Passwort sind falsch
-                res.status(401).send("Ungültige Anmeldeinformationen");
+                res.render("login.ejs",{ message: "Ungültige Anmeldeinformationen"})
+                
+                //res.status(401).send("Ungültige Anmeldeinformationen");
             }
         });
     });
