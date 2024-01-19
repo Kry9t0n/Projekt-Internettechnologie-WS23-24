@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const UserInfo = require('../userInfo.js');
 const db = require("../db_config.js");
 const fs = require('fs');
 
@@ -18,8 +17,6 @@ router.post("/", async (req,res) => {
           console.error(err)
           return
         }
-      
-        //file removed
     })
     db.query(deleteQuery, path, (err, result) => {
     if (err) {

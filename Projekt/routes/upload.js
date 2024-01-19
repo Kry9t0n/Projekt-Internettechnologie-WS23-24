@@ -9,11 +9,11 @@ router.post("/", upload.single('upload_image'), (req,res) => {
     const path = req.file.path;
     
     // Bild wir in die Datenbank erfasst 
-    const insertQuery = 'INSERT INTO images (filename, path, idUser) VALUES (?, ?,?)';
+    const insertQuery = "INSERT INTO images (filename, path, idUser) VALUES (?, ?,?)";
     db.query(insertQuery, [filename, path, UserInfo.userID], (err, result) => {
       if (err) throw err;
-      console.log('Bild in die Datenbank eingefügt.');
-      res.send('Bild erfolgreich hochgeladen und in die Datenbank eingefügt.');
+      console.log("Bild in die Datenbank eingefügt.");
+      res.status(401).send("Bild erfolgreich hochgeladen und in die Datenbank eingefügt.");
     });
 
 })
