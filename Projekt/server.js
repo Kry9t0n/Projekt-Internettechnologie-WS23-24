@@ -13,6 +13,7 @@ const benutzerHomeRoute = require("./routes/benutzer_home")
 const uploadRoute = require("./routes/upload")
 const deleteRoute = require("./routes/delete")
 const edit_OberflächeRoute = require("./routes/edit")
+const profilRoute = require("./routes/profil")
 
 app.set("view-engine", "ejs")
 app.use(express.urlencoded({extended:false}))
@@ -28,7 +29,7 @@ app.use("/benutzerHome", benutzerHomeRoute);
 app.use("/upload", uploadRoute);
 app.use("/delete", deleteRoute);
 app.use("/edit", edit_OberflächeRoute);
-
+app.use("/profil", profilRoute);
 
 app.get("/",(req,res) => {
     res.render("home.ejs");

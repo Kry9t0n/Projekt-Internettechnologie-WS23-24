@@ -99,7 +99,7 @@
                     <input id="imagepath" type="hidden" name="imagePath" value=""> 
                     <button type="submit" class="btn btn-secondary">Bearbeiten</button>
                 </form>
-                <button type="button" class="btn btn-primary">Herunterladen</button>
+                <button id="download" type="button" class="btn btn-primary" onclick="bildHerunterladen()">Herunterladen</button>
                 <form action="/delete" method="POST">
                     <input id="imagepath" type="hidden" name="imagePath" value="">    
                     <button  type="submit" class="btn btn-danger">L&ouml;schen</button>
@@ -108,6 +108,8 @@
             </div>
             </div>
         </div>
+
+
 
         <!--Buttongroup um weiter Bilder anzuzeigen bzw. wieder zurueck zu gehen-->
         <div class="container mt-5">
