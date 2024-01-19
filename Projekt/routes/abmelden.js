@@ -4,8 +4,15 @@ const UserInfo = require('../userInfo.js');
 const db = require("../db_config.js");
 
 router.get("/",(req,res) => {
-    res.render("abmelden.ejs");
+    logoutUser();
+    res.render("home.ejs");
 
 })
 
-module.exports= router;
+function logoutUser() {
+    console.log('Abgemeldeter Benutzer:', UserInfo.benutzername);
+    UserInfo.userID = null;
+    UserInfo.benutzername = null;
+}
+
+module.exports = router;
