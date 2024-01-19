@@ -3,6 +3,7 @@ function getImagePath(image){
     console.log(path);
     document.getElementById("modalImgTarget").setAttribute("src", path);
     document.getElementById("imagepath").setAttribute("value", path);
+    document.getElementById("imagepathdelete").setAttribute("value", path);
 }
 
 function bildHerunterladen() {
