@@ -5,14 +5,14 @@ const db = require("../db_config.js");
 
 router.get("/",(req,res) => {
     logoutUser();
-    res.render("home.ejs");
+    res.redirect("/");
 
 })
 
 function logoutUser() {
     console.log('Abgemeldeter Benutzer:', UserInfo.benutzername);
-    UserInfo.userID = null;
-    UserInfo.benutzername = null;
+    UserInfo.userID = undefined;
+    UserInfo.benutzername = undefined;
 }
 
 module.exports = router;

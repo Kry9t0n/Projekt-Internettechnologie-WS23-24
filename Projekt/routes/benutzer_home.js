@@ -4,7 +4,6 @@ const UserInfo = require('../userInfo.js');
 const db = require("../db_config.js");
 
 router.get("/",(req,res) => {
-    
     const selectQuery = 'SELECT * FROM images WHERE idUser = ?';
     db.query(selectQuery, [UserInfo.userID], (err, result) => {
     if (err) {

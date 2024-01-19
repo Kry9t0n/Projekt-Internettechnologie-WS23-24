@@ -10,7 +10,6 @@ router.get("/",(req,res) => {
 })
 
 router.post("/", async (req,res) => {
-    console.log("test");
     const loginData = {
         email: req.body.email,
         password: req.body.password
