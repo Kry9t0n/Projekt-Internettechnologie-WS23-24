@@ -13,3 +13,21 @@ function bildHerunterladen() {
     downloadLink.download = 'DownloadPicture.jpg';
     downloadLink.click();
 }
+
+function login() {
+    fetch('/login')
+        .then(response => response.text())
+        .then(message => {
+            document.getElementById('status').innerText = message;
+        })
+        .catch(error => console.error('Fehler beim Anmelden:', error));
+}
+
+function logout() {
+    fetch('/abmelden')
+        .then(response => response.text())
+        .then(message => {
+            document.getElementById('status').innerText = message;
+        })
+        .catch(error => console.error('Fehler beim Abmelden:', error));
+}

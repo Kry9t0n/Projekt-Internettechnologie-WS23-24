@@ -1,11 +1,10 @@
 const express = require("express");
+const session = require("express-session");
 const app = express();
 const path = require("path");
 const db = require("./db_config.js");
 const UserInfo = require('./userInfo.js');
 const upload = require('./multer_config');
-
-
 
 const loginRoute = require("./routes/login")
 const signupRoute = require("./routes/signup")
@@ -16,6 +15,24 @@ const edit_OberflächeRoute = require("./routes/edit")
 const profilRoute = require("./routes/profil")
 const abmeldenRoute = require("./routes/abmelden")
 const uploadPageRoute = require("./routes/uploadPage")
+
+
+// Konfiguration für express-session
+app.use(
+    session({
+        secret: "geheimnisvollerSchluessel",
+        resave: false,
+        saveUninitialized: true,
+        cookie: {
+            secure: false, // Beachte: Bei einer Produktionsanwendung sollte dies auf 'true' gesetzt werden, wenn HTTPS verwendet wird
+            maxAge: null, // Session-Cookie wird gelöscht, wenn der Browser geschlossen wird
+        },  
+    })
+);
+
+// Statische Dateien im "views" Verzeichnis bereitstellen
+app.use(express.static(path.join(__dirname, "views")));
+
 
 app.set("view-engine", "ejs")
 app.use(express.urlencoded({extended:false}))
@@ -36,15 +53,12 @@ app.use("/abmelden", abmeldenRoute);
 app.use("/uploadPage", uploadPageRoute);
 
 app.get("/",(req,res) => {
-    res.render("home.ejs");
-
+    if (req.session && req.session.user) {
+        res.redirect('/benutzerHome');
+    } else {
+        res.render('home.ejs');
+    }
 })
-
-
-
-
-
-
 
 app.listen(3000, () => {
     console.log("Server is running")

@@ -4,10 +4,15 @@ const UserInfo = require('../userInfo.js');
 const db = require("../db_config.js");
 
 router.get("/",(req,res) => {
-    logoutUser();
-    res.redirect("/");
-
-})
+    req.session.destroy((err) => {
+        if (err) {
+            console.error('Fehler beim Abmelden:', err);
+        } else {
+            logoutUser();
+            res.redirect('/');
+        }
+    });
+});
 
 function logoutUser() {
     console.log('Abgemeldeter Benutzer:', UserInfo.benutzername);

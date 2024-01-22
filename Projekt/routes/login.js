@@ -5,8 +5,11 @@ const db = require("../db_config.js");
 const path = require("path");
 
 router.get("/",(req,res) => {
-    res.render("login.ejs");
-
+    if (req.session && req.session.user) {
+        res.redirect('/benutzerHome');
+    } else {
+        res.render("login.ejs");
+    }
 })
 
 router.post("/", async (req,res) => {
@@ -46,7 +49,13 @@ router.post("/", async (req,res) => {
                 // Email und Passwort sind richtig
                 UserInfo.userID = result[0].userId;
                 UserInfo.benutzername = result[0].benutzername;
-                console.log(UserInfo);
+                console.log('Angemeldeter Benutzer:', UserInfo.benutzername);
+                
+
+                //Express
+                req.session.user = UserInfo.benutzername;
+
+
                 res.redirect('/benutzerHome');
             } else {
                 // Email oder Passwort sind falsch
