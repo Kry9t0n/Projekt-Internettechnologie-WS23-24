@@ -4,8 +4,11 @@ const UserInfo = require('../userInfo.js');
 const db = require("../db_config.js");
 
 router.get("/",(req,res) => {
-    res.render("profil.ejs");
-
+    if (req.session && req.session.user) {
+        res.render("profil.ejs");
+    } else {
+        res.render('home.ejs');
+    }
 })
 
 module.exports= router;

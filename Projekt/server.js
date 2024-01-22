@@ -13,7 +13,7 @@ const uploadRoute = require("./routes/upload")
 const deleteRoute = require("./routes/delete")
 const edit_OberflächeRoute = require("./routes/edit")
 const profilRoute = require("./routes/profil")
-const abmeldenRoute = require("./routes/abmelden")
+const logoutRoute = require("./routes/logout")
 const uploadPageRoute = require("./routes/uploadPage")
 
 
@@ -49,7 +49,7 @@ app.use("/upload", uploadRoute);
 app.use("/delete", deleteRoute);
 app.use("/edit", edit_OberflächeRoute);
 app.use("/profil", profilRoute);
-app.use("/abmelden", abmeldenRoute);
+app.use("/logout", logoutRoute);
 app.use("/uploadPage", uploadPageRoute);
 
 app.get("/",(req,res) => {
