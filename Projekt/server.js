@@ -3,7 +3,6 @@ const session = require("express-session");
 const app = express();
 const path = require("path");
 const db = require("./db_config.js");
-const UserInfo = require('./userInfo.js');
 const upload = require('./multer_config');
 
 const loginRoute = require("./routes/login")

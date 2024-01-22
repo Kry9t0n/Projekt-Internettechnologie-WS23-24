@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const UserInfo = require('../userInfo.js');
 const db = require("../db_config.js");
 const path = require("path");
 
@@ -47,14 +46,13 @@ router.post("/", async (req,res) => {
 
             if (result.length > 0) {
                 // Email und Passwort sind richtig
-                UserInfo.userID = result[0].userId;
-                UserInfo.benutzername = result[0].benutzername;
-                console.log('Angemeldeter Benutzer:', UserInfo.benutzername);
+                console.log('Angemeldeter Benutzer:', result[0].benutzername +"  ID: " + result[0].userId);
                 
 
                 //Express
-                req.session.user = UserInfo.benutzername;
-
+                req.session.userID = result[0].userId;
+                req.session.user = result[0].benutzername;
+                
 
                 res.redirect('/benutzerHome');
             } else {

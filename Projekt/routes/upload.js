@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const UserInfo = require('../userInfo.js');
 const db = require("../db_config.js");
 const upload = require('../multer_config');
 
@@ -10,7 +9,7 @@ router.post("/", upload.single('upload_image'), (req,res) => {
     
     // Bild wir in die Datenbank erfasst 
     const insertQuery = "INSERT INTO images (filename, path, idUser) VALUES (?, ?,?)";
-    db.query(insertQuery, [filename, path, UserInfo.userID], (err, result) => {
+    db.query(insertQuery, [filename, path, req.session.userID], (err, result) => {
       if (err) throw err;
       console.log("Bild in die Datenbank eingefügt.");
       res.redirect('/benutzerHome');
