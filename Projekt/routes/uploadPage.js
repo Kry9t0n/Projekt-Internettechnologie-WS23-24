@@ -3,7 +3,11 @@ const router = express.Router();
 const db = require("../db_config.js");
 
 router.get("/",(req,res) => {
-    res.render("uploadPage.ejs");
+    if (req.session && req.session.user) {
+        res.render('uploadPage.ejs');
+    } else {
+        res.render('home.ejs');
+    }
 
 })
 

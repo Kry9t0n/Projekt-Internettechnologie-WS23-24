@@ -14,14 +14,14 @@
 <body>
     <nav class="navbar navbar-expand-md bg-body-tertiary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img src="../media/bildbearbeitung.png" alt="Logo" height="50" width="50"></a>
+            <a class="navbar-brand" href="/benutzerHome"><img src="../media/bildbearbeitung.png" alt="Logo" height="50" width="50"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Zeige Navbar">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbar">
                 <div class="navbar-nav">
                     <a class="nav-link active" aria-current="page" href="/benutzerHome">Home</a>
-                    <a class="nav-link" href="#">Upload</a>
+                    <a class="nav-link" href="/uploadPage">Upload</a>
                     <a class="nav-link" href="/profil">Profil</a>
                 </div>
                 <div class="navbar-nav ms-auto">
@@ -43,16 +43,6 @@
                 <p>In der oberen Navigationsleiste finden Sie die Optionen, die es Ihnen ermöglichen, Bilder hochzuladen und zu bearbeiten. Außerdem können Sie unter der Option "Profil" die Daten Ihres Profils einsehen und verändern.</p>
             </div>
         </div>
-       
-        <form action="/upload" method="POST" enctype="multipart/form-data">
-            <label class="form-label" for="inputupload">Upload</label>
-            <input type="file" class="form-control" name="upload_image" id="inputupload">
-            <input class="btn btn-primary" type="submit" >
-    
-        </form>
-        
-
-
 
         <div class="row">
             <div class="col">
