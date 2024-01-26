@@ -10,7 +10,7 @@ const signupRoute = require("./routes/signup")
 const benutzerHomeRoute = require("./routes/benutzer_home")
 const uploadRoute = require("./routes/upload")
 const deleteRoute = require("./routes/delete")
-const edit_OberflächeRoute = require("./routes/edit")
+const editRoute = require("./routes/edit")
 const profilRoute = require("./routes/profil")
 const logoutRoute = require("./routes/logout")
 const uploadPageRoute = require("./routes/uploadPage")
@@ -46,7 +46,7 @@ app.use("/signup", signupRoute);
 app.use("/benutzerHome", benutzerHomeRoute);
 app.use("/upload", uploadRoute);
 app.use("/delete", deleteRoute);
-app.use("/edit", edit_OberflächeRoute);
+app.use("/edit", editRoute);
 app.use("/profil", profilRoute);
 app.use("/logout", logoutRoute);
 app.use("/uploadPage", uploadPageRoute);
