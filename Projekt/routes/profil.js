@@ -4,10 +4,19 @@ const db = require("../db_config.js");
 
 router.get("/",(req,res) => {
     if (req.session && req.session.user) {
-        res.render("profil.ejs");
+        const selectQuery = 'SELECT * FROM users WHERE userId = ?';
+        db.query(selectQuery, [req.session.userID], (err, result) => {
+            if (err) {
+                console.error('Fehler beim Abrufen der Userdaten aus der Datenbank:', err);
+                return;
+            }
+        console.log(result[0]);
+        res.render("profil.ejs", {userdaten: result[0]});
+    });
     } else {
         res.render('home.ejs');
     }
 })
 
 module.exports= router;
+
