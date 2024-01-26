@@ -14,6 +14,7 @@ const editRoute = require("./routes/edit")
 const profilRoute = require("./routes/profil")
 const logoutRoute = require("./routes/logout")
 const uploadPageRoute = require("./routes/uploadPage")
+const delete_userRoute = require("./routes/delete_user")
 
 
 // Konfiguration für express-session
@@ -50,6 +51,7 @@ app.use("/edit", editRoute);
 app.use("/profil", profilRoute);
 app.use("/logout", logoutRoute);
 app.use("/uploadPage", uploadPageRoute);
+app.use("/deleteUser", delete_userRoute);
 
 app.get("/",(req,res) => {
     if (req.session && req.session.user) {
