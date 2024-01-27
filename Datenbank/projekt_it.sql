@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 14. Jan 2024 um 14:09
+-- Erstellungszeit: 27. Jan 2024 um 21:44
 -- Server-Version: 10.4.32-MariaDB
 -- PHP-Version: 8.2.12
 
@@ -46,7 +46,7 @@ INSERT INTO `images` (`idImages`, `filename`, `path`, `idUser`) VALUES
 (6, '1705152863874.JPG', 'images\\3\\1705152863874.JPG', 3),
 (7, '1705152869212.JPG', 'images\\3\\1705152869212.JPG', 3),
 (8, '1705152874398.JPG', 'images\\3\\1705152874398.JPG', 3),
-(13, '1705232062512.JPG', 'images\\1\\1705232062512.JPG', 1);
+(23, '1705955971022.JPG', 'images\\6\\1705955971022.JPG', 6);
 
 -- --------------------------------------------------------
 
@@ -68,9 +68,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`userId`, `vorname`, `nachname`, `benutzername`, `email`, `password`) VALUES
-(1, '123', '123', '123', '123@32.de', '123'),
 (2, '123', '123', '123', '123@322.de', '123'),
-(3, '1', '1', '1', 'das@sad.de', '123');
+(3, '1', '1', '1', 'das@sad.de', '123'),
+(4, '3123', '21321', '312312', '12313@3213', '312123'),
+(5, '3123', '21321', '312312', '123@32.de', '312123'),
+(6, '1242141', '4214124', '241241', '111@1.de', '123');
 
 --
 -- Indizes der exportierten Tabellen
@@ -81,7 +83,7 @@ INSERT INTO `users` (`userId`, `vorname`, `nachname`, `benutzername`, `email`, `
 --
 ALTER TABLE `images`
   ADD PRIMARY KEY (`idImages`),
-  ADD KEY `idUser` (`idUser`);
+  ADD KEY `images_ibfk_1` (`idUser`);
 
 --
 -- Indizes für die Tabelle `users`
@@ -97,13 +99,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT für Tabelle `images`
 --
 ALTER TABLE `images`
-  MODIFY `idImages` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `idImages` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT für Tabelle `users`
 --
 ALTER TABLE `users`
-  MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Constraints der exportierten Tabellen
@@ -113,7 +115,7 @@ ALTER TABLE `users`
 -- Constraints der Tabelle `images`
 --
 ALTER TABLE `images`
-  ADD CONSTRAINT `images_ibfk_1` FOREIGN KEY (`idUser`) REFERENCES `users` (`userId`);
+  ADD CONSTRAINT `images_ibfk_1` FOREIGN KEY (`idUser`) REFERENCES `users` (`userId`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
