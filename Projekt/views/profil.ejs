@@ -1,17 +1,22 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profil</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/navbar-elem-hover.css">
+    <script src="js/scriptProfil.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" defer></script>
 </head>
+
 <body>
     <nav class="navbar navbar-expand-md bg-body-tertiary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/benutzerHome"><img src="../media/bildbearbeitung.png" alt="Logo" height="50" width="50"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Zeige Navbar">
+            <a class="navbar-brand" href="/benutzerHome"><img src="../media/bildbearbeitung.png" alt="Logo" height="50"
+                    width="50"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar"
+                aria-controls="navbar" aria-expanded="false" aria-label="Zeige Navbar">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbar">
@@ -32,32 +37,81 @@
         <div class="row">
             <div class="col">
                 <h1>Profil&uuml;bersicht</h1>
+                <div class="card-body">
+                    <div class="form-group row">
+                        <label for="vorname" class="col-sm-4 col-form-label "> <strong>Vorname:</strong></label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control-plaintext" id="vorname" value="<%=userdaten.vorname %>" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="nachname" class="col-sm-4 col-form-label"><strong>Name:</strong></label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control-plaintext" id="nachname" value="<%=userdaten.nachname%>" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="email" class="col-sm-4 col-form-label"><strong>Email:</strong></label>
+                        <div class="col-sm-8">
+                            <input type="email" class="form-control-plaintext" id="email" value="<%=userdaten.email %>" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="benutzername" class="col-sm-4 col-form-label"><strong>Benutzername:</strong></label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control-plaintext" id="benutzername" value="<%=userdaten.benutzername %>" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="passwort" class="col-sm-4 col-form-label"><strong>Passwort:</strong></label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control-plaintext" id="passwort" value="<%=userdaten.password %>" readonly>
+                        </div>
+                    </div>
+                    <div class="text-center mt-3">
+                        <button class="btn btn-primary" onclick="toggleEditForm()">Profil bearbeiten</button>
+                        <button type="button" class="btn btn-danger" href="/deleteUser">Profil löschen</button>
+                    </div>
+                    <div class="edit-form mt-4" id="editForm" style="display: none;">
+                        <form action="/editUser" method="POST"></form>
+                            <div class="form-group row">
+                                <label for="editVorname" class="col-sm-4 col-form-label"><strong>Vorname:</strong></label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="vorname" value="<%=userdaten.vorname %>">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="editNachname" class="col-sm-4 col-form-label"><strong>Name:</strong></label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="nachname" value="<%=userdaten.nachname%>">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="editEmail" class="col-sm-4 col-form-label"><strong>Email:</strong></label>
+                                <div class="col-sm-8">
+                                    <input type="email" class="form-control" id="email" value="<%=userdaten.email %>">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="editBenutzername" class="col-sm-4 col-form-label"><strong>Benutzername:</strong></label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="benutzername" value="<%=userdaten.benutzername %>">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="editPasswort" class="col-sm-4 col-form-label"><strong>Passwort:</strong></label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="editPasswort" placeholder="Neues Passwort">
+                                </div>
+                            </div>
+                            <div class="text-center mt-3">
+                                <button type="submit" class="btn btn-success mr-2">Speichern</button>
+                                <button type="button" class="btn btn-danger" onclick="cancelEdit()">Abbrechen</button>
+                           </div>    
+                        </form>
+                    </div>           
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <table class="table table-striped table-hover">
-                    <thead>
-                        <th>Vorname</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Benutzername</th>
-                        <th>Passwort</th>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td id="vorname"><%= userdaten.vorname %></td>
-                            <td id="name"><%= userdaten.nachname %></td>
-                            <td id="email"><%= userdaten.email %></td>
-                            <td id="benutzername"><%= userdaten.benutzername %></td>
-                            <td id="passwort"><%= userdaten.password %></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <div class="navbar-nav">
-            <a class="nav-link active" aria-current="page" href="/deleteUser">Profil loeschen</a>
         </div>
     </div>
 
@@ -70,8 +124,10 @@
             © 2023
         </p>
         <p>
-            <a href="https://www.flaticon.com/de/kostenlose-icons/photoshop" title="photoshop Icons">Photoshop Icons erstellt von Smashicons - Flaticon</a>
+            <a href="https://www.flaticon.com/de/kostenlose-icons/photoshop" title="photoshop Icons">Photoshop Icons
+                erstellt von Smashicons - Flaticon</a>
         </p>
     </footer>
 </body>
-</html> 
+
+</html>
