@@ -53,7 +53,7 @@ app.use("/profil", profilRoute);
 app.use("/logout", logoutRoute);
 app.use("/uploadPage", uploadPageRoute);
 app.use("/deleteUser", delete_userRoute);
-app.use("/editUser", delete_userRoute);
+app.use("/editUser", edit_userRoute);
 
 app.get("/",(req,res) => {
     if (req.session && req.session.user) {

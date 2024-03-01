@@ -4,32 +4,36 @@ const db = require("../db_config.js");
 const path = require("path");
 
 router.get("/",(req,res) => {
-    res.render("profil.ejs");
-
+    if (req.session && req.session.user) {
+        res.render("profil.ejs" , {path: path});
+    } else {
+        res.render('home.ejs');
+    }
 })
 
-router.post("/", async (req,res) => {
-    const signupData = {
-        vorname: req.body.vorname,
-        nachname: req.body.nachname,
-        benutzername: req.body.benutzername,
-        email: req.body.email,
-        password: req.body.password
+router.post("/", async (req, res) => {
+    const editData = {
+        vorname: req.body.editVorname || '',
+        nachname: req.body.editNachname || '',
+        benutzername: req.body.editBenutzername || '',
+        email: req.body.editEmail || '',
+        password: req.body.editPasswort || ''
 
     }
 
-    const insertQuery = "UPDATE users SET (vorname, nachname, benutzername, email, password) VALUES (?,?,?,?,?) where userId = " + req.session.userID;
-    const insertValues  = [signupData.vorname, signupData.nachname, signupData.benutzername, signupData.email, signupData.password];
+    const insertQuery = "UPDATE users SET vorname = ?, nachname = ?, benutzername = ?, email = ?, password = ? WHERE userId = ?";
+    const insertValues = [editData.vorname, editData.nachname, editData.benutzername, editData.email, editData.password, req.session.userID];
 
     db.query(insertQuery, insertValues, (err, result) => {
         if (err) {
             console.error("Fehler beim Einfügen der Daten: " + err.message);
+            res.status(500).send("Fehler beim Einfügen der Daten");
+        } else {
+            // Erfolgreich registiert
+            console.log("Datensatz eingefügt: " + result.affectedRows + " Zeile(n) betroffen");
+            res.redirect('/profil');
         }
-        // Erfolgreich registiert
-        console.log("Datensatz eingefügt: " + result.affectedRows + " Zeile(n) betroffen");
-        //res.status(200).send("Datensatz eingefügt");
-        res.redirect('/profil');
     });
-})
+});
 
-module.exports= router;
+module.exports = router;

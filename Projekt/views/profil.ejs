@@ -73,29 +73,29 @@
                         <button type="button" class="btn btn-danger" href="/deleteUser">Profil löschen</button>
                     </div>
                     <div class="edit-form mt-4" id="editForm" style="display: none;">
-                        <form action="/editUser" method="POST"></form>
+                        <form action="/editUser" method="POST">
                             <div class="form-group row">
                                 <label for="editVorname" class="col-sm-4 col-form-label"><strong>Vorname:</strong></label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="vorname" value="<%=userdaten.vorname %>">
+                                    <input type="text" class="form-control" id="editVorname" value="<%=userdaten.vorname %>">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="editNachname" class="col-sm-4 col-form-label"><strong>Name:</strong></label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="nachname" value="<%=userdaten.nachname%>">
+                                    <input type="text" class="form-control" id="editNachname" value="<%=userdaten.nachname%>">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="editEmail" class="col-sm-4 col-form-label"><strong>Email:</strong></label>
                                 <div class="col-sm-8">
-                                    <input type="email" class="form-control" id="email" value="<%=userdaten.email %>">
+                                    <input type="email" class="form-control" id="editEmail" value="<%=userdaten.email %>">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="editBenutzername" class="col-sm-4 col-form-label"><strong>Benutzername:</strong></label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="benutzername" value="<%=userdaten.benutzername %>">
+                                    <input type="text" class="form-control" id="editBenutzername" value="<%=userdaten.benutzername %>">
                                 </div>
                             </div>
                             <div class="form-group row">
