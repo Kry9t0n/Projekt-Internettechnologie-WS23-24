@@ -70,38 +70,38 @@
                     </div>
                     <div class="text-center mt-3">
                         <button class="btn btn-primary" onclick="toggleEditForm()">Profil bearbeiten</button>
-                        <button type="button" class="btn btn-danger" href="/deleteUser">Profil löschen</button>
+                        <a class="btn btn-danger" href="/deleteUser">Profil löschen</a>
                     </div>
                     <div class="edit-form mt-4" id="editForm" style="display: none;">
                         <form action="/editUser" method="POST">
                             <div class="form-group row">
                                 <label for="editVorname" class="col-sm-4 col-form-label"><strong>Vorname:</strong></label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="editVorname" value="<%=userdaten.vorname %>">
+                                    <input type="text" class="form-control" id="editVorname" name="vorname" value="<%=userdaten.vorname %>">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="editNachname" class="col-sm-4 col-form-label"><strong>Name:</strong></label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="editNachname" value="<%=userdaten.nachname%>">
+                                    <input type="text" class="form-control" id="editNachname" name="nachname" value="<%=userdaten.nachname%>">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="editEmail" class="col-sm-4 col-form-label"><strong>Email:</strong></label>
                                 <div class="col-sm-8">
-                                    <input type="email" class="form-control" id="editEmail" value="<%=userdaten.email %>">
+                                    <input type="email" class="form-control" id="editEmail" name="email" value="<%=userdaten.email %>">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="editBenutzername" class="col-sm-4 col-form-label"><strong>Benutzername:</strong></label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="editBenutzername" value="<%=userdaten.benutzername %>">
+                                    <input type="text" class="form-control" id="editBenutzername" name="benutzername"  value="<%=userdaten.benutzername %>">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="editPasswort" class="col-sm-4 col-form-label"><strong>Passwort:</strong></label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="editPasswort" placeholder="Neues Passwort">
+                                    <input type="text" class="form-control" id="editPasswort" name="password" placeholder="Neues Passwort">
                                 </div>
                             </div>
                             <div class="text-center mt-3">

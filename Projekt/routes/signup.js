@@ -17,6 +17,7 @@ router.post("/", async (req,res) => {
         password: req.body.password
 
     }
+    console.log(signupData);
     const insertQuery = "INSERT INTO users (vorname, nachname,benutzername,email, password) VALUES (?, ?,?,?,?)";
     const insertValues  = [signupData.vorname, signupData.nachname, signupData.benutzername, signupData.email, signupData.password];
 
@@ -28,13 +29,13 @@ router.post("/", async (req,res) => {
     db.query(checkBenutzer, checkValues, (err, result) => {
         if (err) {
             console.error("Fehler beim Überprüfen des Benutzernamens: " + err.message);
-            res.render("signup.ejs",{ message: "Fehler beim Überprüfen des Benutzernamens"})
+            return res.render("signup.ejs",{ message: "Fehler beim Überprüfen des Benutzernamens"})
             //return res.status(500).send("Fehler beim Überprüfen des Benutzernamens");
         }
 
         if (result[0]['COUNT(*)'] > 0) {
             // Benutzername existiert bereits
-            res.render("signup.ejs",{ message: "Die Email wird bereits verwendet"})
+            return res.render("signup.ejs",{ message: "Die Email wird bereits verwendet"})
             //return res.status(409).send("Die Email wird bereits verwendet");
         }
 
@@ -42,7 +43,7 @@ router.post("/", async (req,res) => {
         db.query(insertQuery, insertValues, (err, result) => {
             if (err) {
                 console.error("Fehler beim Einfügen der Daten: " + err.message);
-                res.render("signup.ejs",{ message: "Fehler beim Einfügen der Daten"})
+                return res.render("signup.ejs",{ message: "Fehler beim Einfügen der Daten"})
                 //return res.status(500).send("Fehler beim Einfügen der Daten");
             }
             // Erfolgreich registiert
