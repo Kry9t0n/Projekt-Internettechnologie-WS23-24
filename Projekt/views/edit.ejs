@@ -8,6 +8,20 @@
     <link rel="stylesheet" href="navbar-elem-hover.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" defer></script>
+    <script src="../js/editPageController.js" defer></script>
+
+    <style>
+        .max-img{
+            max-width: 100%;
+            height: auto;
+        }
+
+        .max-img img{
+            max-width: 300px;
+            height: auto;
+        }
+    </style>
+
 </head>
 <body>
     <!--Navigationsleiste-->
@@ -36,9 +50,9 @@
                           Filter
                         </a>
                         <ul class="dropdown-menu">
-                          <li><a class="dropdown-item" href="#">Sepiafilter</a></li>
-                          <li><a class="dropdown-item" href="#">Graufilter</a></li>
-                          <li><a class="dropdown-item" href="#">Farbinvertierung</a></li>
+                          <li><form class="dropdown-item" action="/sepia" method="POST"><input name="imagePath" type="hidden" value="<%= path %>"><button type="submit" class="btn">Sepiafilter</button></form></li>
+                          <li><form class="dropdown-item" action="/grau" method="POST"><input name="imagePath" type="hidden" value="<%= path %>"><button type="submit" class="btn">Graufilter</button></form></li>
+                          <li><form class="dropdown-item" action="/farbinvertierung" method="POST"><input name="imagePath" type="hidden" value="<%= path %>"><button type="submit" class="btn">Farbinvertierung</button></form></li>
                         </ul>
                     </li>
                     
@@ -62,8 +76,8 @@
                         </ul>
                     </li>
 
-                    <a href="#" class="nav-link">Helligkeit</a>
-                    <a href="#" class="nav-link">Kontrast</a>
+                    <button class="btn" id="brightness" onclick="enableParamInput(this)">Helligkeit</button>
+                    <button class="btn" id="contrast" onclick="enableParamInput(this)">Kontrast</button>
 
                 </div>
             </div>
@@ -72,7 +86,7 @@
     
     <div class="container"><!--Hier kommt das Bild rein-->
         <div class="row">
-            <img src="<%= path %>" width="300" height="400">
+            <img id="placeForImg" src="<%= path %>" width="" height="" class="img-fluid">
         </div>
     </div>
 
@@ -80,8 +94,9 @@
         <div class="row">
             <div class="collapse" id="slider">
                 <form action="">
-                    <label for="rangeSlider" class="form-label" id="formLabel">Test</label>
-                    <input type="range" class="form-range" min="-25" max="25" step="5" id="rangeSlider">
+                    <label for="rangeSlider" class="form-label" id="formLabel"></label>
+                    <input type="range" class="form-range" min="" max="" step="" id="rangeSlider">
+                    <input type="submit" class="btn btn-primary">
                 </form>
             </div>
         </div>
@@ -90,16 +105,22 @@
     <div class="container"><!--Buttons-->
         <div class="row">
             <div class="col text-center">
-                <button class="btn btn-danger mt-1">Verwerfen
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
-                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
-                  </svg>
-                </button>
-                <button class="btn btn-success mt-1">Speichern
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
-                        <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z"/>
-                    </svg>
-                </button>
+                <form action="/deletedraft" method="POST">
+                    <input type="hidden" name="imagePath" value="<%= path %>">
+                    <button class="btn btn-danger mt-1">Verwerfen
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+                      </svg>
+                    </button>
+                </form>
+                <form action="/savedraft" method="POST">
+                    <input type="hidden" name="imagePath" value="<%= path %>">
+                    <button class="btn btn-success mt-1">Speichern
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
+                            <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z"/>
+                        </svg>
+                    </button>
+                </form>
             </div>
         </div>
     </div>
