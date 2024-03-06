@@ -17,6 +17,11 @@ const uploadPageRoute = require("./routes/uploadPage")
 const delete_userRoute = require("./routes/delete_user")
 const edit_userRoute = require("./routes/edit_user")
 
+const sepiaRoute = require("./routes/sepia.js")
+const grauFilterRoute = require("./routes/graufilter.js")
+const farbInvertierungsRoute = require("./routes/farbinvertierung.js")
+const BildEntwurfSpeichernRoute = require("./routes/save.js")
+const BildEntwurfLoeschenRoute = require("./routes/deleteEditDraft.js")
 
 // Konfiguration für express-session
 app.use(
@@ -54,6 +59,12 @@ app.use("/logout", logoutRoute);
 app.use("/uploadPage", uploadPageRoute);
 app.use("/deleteUser", delete_userRoute);
 app.use("/editUser", edit_userRoute);
+app.use("/sepia", sepiaRoute);
+app.use("/grau", grauFilterRoute);
+app.use("/farbinvertierung", farbInvertierungsRoute);
+app.use("/savedraft", BildEntwurfSpeichernRoute);
+app.use("/deletedraft", BildEntwurfLoeschenRoute);
+
 
 app.get("/",(req,res) => {
     if (req.session && req.session.user) {
