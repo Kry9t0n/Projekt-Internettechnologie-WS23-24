@@ -16,6 +16,8 @@ const logoutRoute = require("./routes/logout")
 const uploadPageRoute = require("./routes/uploadPage")
 const delete_userRoute = require("./routes/delete_user")
 const edit_userRoute = require("./routes/edit_user")
+const referenceRoute = require("./routes/reference")
+const documentationRoute = require("./routes/documentation")
 
 const sepiaRoute = require("./routes/sepia.js")
 const grauFilterRoute = require("./routes/graufilter.js")
@@ -59,6 +61,9 @@ app.use("/logout", logoutRoute);
 app.use("/uploadPage", uploadPageRoute);
 app.use("/deleteUser", delete_userRoute);
 app.use("/editUser", edit_userRoute);
+app.use("/reference", referenceRoute);
+app.use("/documentation", documentationRoute);
+
 app.use("/sepia", sepiaRoute);
 app.use("/grau", grauFilterRoute);
 app.use("/farbinvertierung", farbInvertierungsRoute);
