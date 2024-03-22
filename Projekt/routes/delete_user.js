@@ -4,24 +4,24 @@ const db = require("../db_config.js");
 const fs = require('fs');
 const path = require('path');
 
-const deleteQuery = "Delete FROM users where userId = ?";
 
-
-
+/*
+* Route um User Profil zu löschen, mit all seinen Bildern
+*/
 router.get("/",(req,res) => {
-    if (req.session && req.session.user) {
-        console.log("delete_user test");
+    if (req.session && req.session.user) { 
         
+        const deleteQuery = "Delete FROM users where userId = ?";
+
+        //löschen der Userdaten in der Datenbank
         db.query(deleteQuery, req.session.userID, (err, result) => {
             if (err) {
                 console.error("Fehler beim löschen des Users: " + err.message);
                 return res.status(500).send("Fehler beim löschen des Users");
             }
-        
-        
-        
         });
-        
+       
+        //löschen der gespeicherten bilder des Users
         const imagePath = path.resolve("images", `${req.session.userID}`);
         fs.rm(imagePath, { recursive: true, force: true }, (err) => {
             if (err) {
@@ -29,6 +29,8 @@ router.get("/",(req,res) => {
               return
             }
         })
+        
+        //weiterleitung zu "logout" um session zu löschen 
         res.redirect('/logout');
     } else {
         res.render('home.ejs');

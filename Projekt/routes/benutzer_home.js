@@ -22,7 +22,7 @@ router.get("/", (req, res) => {
     });
  
   } else {
-    res.render('home.ejs');
+    res.redirect('/');
   }
 })
 

@@ -3,7 +3,9 @@ const router = express.Router();
 const db = require("../db_config.js");
 const path = require("path");
 
-
+/*
+* Route für das Bearbeiten/ändern der Userdaten
+*/
 router.post("/", async (req, res) => {
     const editData = {
         vorname: req.body.vorname,
@@ -14,8 +16,6 @@ router.post("/", async (req, res) => {
 
     }
 
-    console.log("Test: edit_user")
-
     const insertQuery = "UPDATE users SET vorname = ?, nachname = ?, benutzername = ?, email = ?, password = ? WHERE userId = ?";
     const insertValues = [editData.vorname, editData.nachname, editData.benutzername, editData.email, editData.password, req.session.userID];
 
@@ -23,33 +23,27 @@ router.post("/", async (req, res) => {
     const checkValues = [editData.email];
 
 
-    //Überprüfung ob der Benutzer schon existiert 
+    //Überprüfung ob die Email schon existiert 
     db.query(checkEmail, checkValues, (err, result) => {
         if (err) {
-            console.error("Fehler beim Überprüfen des Benutzernamens: " + err.message);
-            //return res.render("profil.ejs",{ message: "Fehler beim Überprüfen des Benutzernamens"})
-            return res.status(500).send("Fehler beim Überprüfen des Benutzernamens");
+            console.error("Fehler beim Überprüfen der Email: " + err.message);
+            return res.redirect("/profil?message=Fehler%20beim%20Überprüfen%20der%20Email");
         }
-
+        
         if (result[0].countResult > 0  && result[0].userId !== req.session.userID) {
-            console.log(result[0].countResult)
-            console.log(result[0].userId)
-            console.log(req.session.userID)
-            // Benutzername existiert bereits
-            //return res.render("profil.ejs",{ message: "Die Email wird bereits vorhanden"})
-            return res.status(409).send("Die Email wird bereits verwendet");
+            //Email existiert bereits
+            return res.redirect("/profil?message=Die%20Email%20ist%20bereits%20vorhanden");
         }
 
-
-
+        //Ändern der Userdaten
         db.query(insertQuery, insertValues, (err, result) => {
             if (err) {
                 console.error("Fehler beim Einfügen der Daten: " + err.message);
-                res.status(500).send("Fehler beim Einfügen der Daten");
+                return res.redirect("/profil?message=Fehler%20beim%20ändern%20der%20Daten");
             } else {
-                // Erfolgreich Update
-                console.log("Datensatz eingefügt: " + result.affectedRows + " Zeile(n) betroffen");
-                res.redirect('/profil');
+                // Erfolgreich änderung  der Userdaten
+                console.log("Userdaten erfolgreich verändert");
+                return res.redirect('/profil');
             }
         });
     });
