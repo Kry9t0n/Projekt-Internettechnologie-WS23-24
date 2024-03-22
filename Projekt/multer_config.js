@@ -2,8 +2,9 @@ const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 /*
-Konfiguation von Multer 
-Ist dafür da, dass die Hochgeladenen Bilder in ihren entsprechenden Orderner gespeichert werden 
+* Konfiguation von Multer 
+* Ist dafür da, dass die Hochgeladenen Bilder in ihren entsprechenden (falls nicht vorhanden wird einer erstellt) Orderner gespeichert werden 
+* Der Name der Bilder ist ein zusammensetzung von der aktuellen Zeit ("Date.now()") und der Dateiendung ("path.extname(file.originalname)")
 */
 const storage = multer.diskStorage({
     destination: ( req, file ,cb) => {

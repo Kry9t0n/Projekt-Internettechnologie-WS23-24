@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const db = require("../db_config.js");
-const path = require("path");
 
 
 /*
@@ -11,6 +10,7 @@ router.get("/",(req,res) => {
     res.render("signup.ejs");
 
 })
+
 /*
 * Neuer User erstellen und in Datenbank speichern
 * E-Mail-Adressen sind auf unseren Seite einmalig, weshalb vor der der Erstellung des
@@ -54,7 +54,7 @@ router.post("/", async (req,res) => {
                 return res.render("signup.ejs",{ message: "Fehler beim Einfügen der Daten"})
             }
             // Erfolgreich registiert
-            console.log("Datensatz eingefügt: " + result + " Zeile(n) betroffen");
+            console.log("Neuer User Registiert -> UserID: " + result.insertId);
 
             // weiterleitung zu Login-Page
             res.redirect('/login');
