@@ -27,7 +27,7 @@ router.post("/", async (req, res) => {
     db.query(checkEmail, checkValues, (err, result) => {
         if (err) {
             console.error("Fehler beim Überprüfen des Benutzernamens: " + err.message);
-            //return res.render("signup.ejs",{ message: "Fehler beim Überprüfen des Benutzernamens"})
+            //return res.render("profil.ejs",{ message: "Fehler beim Überprüfen des Benutzernamens"})
             return res.status(500).send("Fehler beim Überprüfen des Benutzernamens");
         }
 
@@ -36,7 +36,7 @@ router.post("/", async (req, res) => {
             console.log(result[0].userId)
             console.log(req.session.userID)
             // Benutzername existiert bereits
-            //return res.render("signup.ejs",{ message: "Die Email wird bereits verwendet"})
+            //return res.render("profil.ejs",{ message: "Die Email wird bereits vorhanden"})
             return res.status(409).send("Die Email wird bereits verwendet");
         }
 
