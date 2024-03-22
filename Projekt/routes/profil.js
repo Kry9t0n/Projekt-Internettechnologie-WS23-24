@@ -10,7 +10,6 @@ router.get("/",(req,res) => {
                 console.error('Fehler beim Abrufen der Userdaten aus der Datenbank:', err);
                 return;
             }
-        console.log(result[0]);
         res.render("profil.ejs", {userdaten: result[0]});
     });
     } else {

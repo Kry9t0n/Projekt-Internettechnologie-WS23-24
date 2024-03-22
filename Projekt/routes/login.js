@@ -48,8 +48,6 @@ router.post("/", async (req,res) => {
                 // Email und Passwort sind richtig
                 console.log('Angemeldeter Benutzer:', result[0].benutzername +"  ID: " + result[0].userId);
                 
-
-                //Express
                 req.session.userID = result[0].userId;
                 req.session.user = result[0].benutzername;
                 

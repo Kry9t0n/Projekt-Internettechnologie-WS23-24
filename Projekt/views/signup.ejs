@@ -11,7 +11,6 @@
     <div class="container h-100">
         <div class="row h-100 justify-content-center align-content-center">
             <div class="col-lg-10 col-auto">
-                
                 <%   if(typeof message != "undefined" && message) { %>
 
                     <div class="mt-5 mb-3">
@@ -26,8 +25,7 @@
             
                     </div> 
             
-                  <% }    %>
-                
+                  <% }    %>           
                 <form action="/signup" method="POST">
                     <fieldset>
                         <legend>Sign up</legend>
@@ -35,7 +33,7 @@
                             Hier befindet sich der HTML Code fuer Bildschirme groesser/gleich dem 
                             Large-Breakpoint.
                         -->
-                        <div class="row d-lg-flex d-none"> 
+                        <div class="row d-lg-flex "> 
                             <div class="col-6">
                                 <div class="mb-3 form-floating">
                                     <input type="text" class="form-control" id="forenameInput" placeholder="" name="vorname">
@@ -50,7 +48,7 @@
                             </div>
                         </div>
                         
-                        <div class="row d-lg-flex d-none">
+                        <div class="row d-lg-flex ">
                             <div class="col-6">
                                 <div class="mb-3 form-floating">
                                     <input type="text" class="form-control" id="usernameInput" placeholder="" name="benutzername">
@@ -65,7 +63,7 @@
                             </div>
                         </div>
 
-                        <div class="row d-lg-flex d-none">
+                        <div class="row d-lg-flex ">
                             <div class="col-6">
                                 <div class="mb-3 form-floating">
                                     <input type="password" id="passwordInput" class="form-control" placeholder="" onblur="validateOriginalPasswordLgInput()" name="password">
@@ -78,67 +76,6 @@
                                     <input type="password" id="passwordValidationInput" class="form-control" placeholder="" onblur="validateValidationPasswordLgInput()" name="passwordWiederholt">
                                     <div class="form-text">Passwort wiederholen</div>
                                     <label for="passwordValidationInput" class="form-label">Passwort wiederholen</label>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <!--
-                            Hier befindet sich der HTML Code fuer Bildschirme kleiner als der
-                            Large-Breakpoint.
-                        -->
-                        <div class="row">
-                            <div class="col">
-                                <div class="mb-3 form-floating d-lg-none">
-                                    <input type="text" class="form-control" id="forenameInputSm" placeholder="">
-                                    <label for="forenameInputSm" class="form-label">Vorname</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col">
-                                <div class="mb-3 form-floating d-lg-none">
-                                    <input type="text" id="surnameInputSm" class="form-control" placeholder="">
-                                    <label for="surnameInputSm" class="form-label">Nachname</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col">
-                                <div class="mb-3 form-floating d-lg-none">
-                                    <input type="text" class="form-control" id="usernameInputSm" placeholder="">
-                                    <label for="usernameInputSm" class="form-label">Benutzername</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col">
-                                <div class="mb-3 form-floating d-lg-none">
-                                    <input type="email" class="form-control" id="emailInputSm" placeholder="">
-                                    <label for="emailInputSm" class="form-label">Email</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col">
-                                <div class="mb-3 form-floating d-lg-none">
-                                    <input type="password" id="passwordInputSm" class="form-control" placeholder="" onblur="validateOriginalPasswordSmInput()">
-                                    <div class="form-text">8 oder mehr Zeichen</div>
-                                    <label for="passwordInputSm" class="form-label">Passwort</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col">
-                                <div class="mb-3 form-floating d-lg-none">
-                                    <input type="password" id="passwordValidationInputSm" class="form-control" placeholder="" onblur="validateValidationPasswordSmInput()">
-                                    <div class="form-text">Passwort wiederholen</div>
-                                    <label for="passwordValidationInputSm" class="form-label">Passwort wiederholen</label>
                                 </div>
                             </div>
                         </div>

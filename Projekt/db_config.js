@@ -1,5 +1,11 @@
 const mysql = require("mysql");
 
+
+
+/*
+Konifguration der Datenbank 
+Wichtig! @database muss der name der Datenbank stehen
+*/
 const connection = mysql.createConnection({
         host: "localhost",
         user: "root",
@@ -7,6 +13,10 @@ const connection = mysql.createConnection({
         database: "projekt_it"
 });
 
+
+/*
+Verbindung zur Datenbank wird erstellt
+*/
 connection.connect(function(error){
     if(error){
         console.log("Error:")

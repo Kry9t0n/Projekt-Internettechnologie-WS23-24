@@ -41,10 +41,10 @@ app.use(
 // Statische Dateien im "views" Verzeichnis bereitstellen
 app.use(express.static(path.join(__dirname, "views")));
 
-
+ 
 app.set("view-engine", "ejs")
 app.use(express.urlencoded({extended:false}))
-//Statischer Pfad um auf die Bilder zuzugreifen 
+// Route zu ordern für Html Seiten 
 app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use('/js', express.static(path.join(__dirname, 'js')));
 app.use('/css', express.static(path.join(__dirname, 'css')));
@@ -71,6 +71,9 @@ app.use("/savedraft", BildEntwurfSpeichernRoute);
 app.use("/deletedraft", BildEntwurfLoeschenRoute);
 
 
+/*
+Startseite
+*/
 app.get("/",(req,res) => {
     if (req.session && req.session.user) {
         res.redirect('/benutzerHome');
@@ -79,7 +82,9 @@ app.get("/",(req,res) => {
     }
 })
 
+/*
+Port des Servers
+*/
 app.listen(3000, () => {
-    console.log("Server is running")
-   
+    console.log("Server is running")  
 })
