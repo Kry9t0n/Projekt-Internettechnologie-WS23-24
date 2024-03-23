@@ -54,7 +54,7 @@ router.post("/", async (req,res) => {
                 return res.render("signup.ejs",{ message: "Fehler beim Einfügen der Daten"})
             }
             // Erfolgreich registiert
-            console.log("Neuer User Registiert -> UserID: " + result.insertId);
+            console.log("Neuer User registiert -> UserID: " + result.insertId);
 
             // weiterleitung zu Login-Page
             res.redirect('/login');

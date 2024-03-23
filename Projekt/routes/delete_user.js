@@ -17,11 +17,11 @@ router.get("/",(req,res) => {
         db.query(deleteQuery, req.session.userID, (err, result) => {
             if (err) {
                 console.error("Fehler beim löschen des Users: " + err.message);
-                return res.status(500).send("Fehler beim löschen des Users");
+                return res.redirect("/profil?message=Fehler%20beim%20löschen%20des%20Users");
             }
         });
        
-        //löschen der gespeicherten bilder des Users
+        //löschen der gespeicherten Bilder des Users
         const imagePath = path.resolve("images", `${req.session.userID}`);
         fs.rm(imagePath, { recursive: true, force: true }, (err) => {
             if (err) {

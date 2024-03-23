@@ -17,7 +17,7 @@ router.get("/", (req, res) => {
 
 /*
 * Login Vorgang 
-* Wenn login Erfolgreich, weiterleitung zur BenutzerHome-Page
+* Wenn Login Erfolgreich, weiterleitung zur BenutzerHome-Page
 */
 router.post("/", async (req, res) => {
     const loginData = {

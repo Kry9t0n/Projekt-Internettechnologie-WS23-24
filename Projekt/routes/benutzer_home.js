@@ -4,9 +4,9 @@ const db = require("../db_config.js");
 
 
 /*
-Benutzer Home Seite
-Nach abruf der Seite werden die Bilder vom User aus der Datenbank entnommen und 
-werden der Html Seite als "images" mitgeschickt die gerendert wird
+* Benutzer Home Seite
+* Nach abruf der Seite werden die Bilder vom User aus der Datenbank entnommen und 
+* werden der Html Seite als "images" mitgeschickt die gerendert wird
 */
 router.get("/", (req, res) => {
   if (req.session && req.session.user) {
