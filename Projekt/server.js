@@ -22,6 +22,10 @@ const documentationRoute = require("./routes/documentation")
 const sepiaRoute = require("./routes/sepia.js")
 const grauFilterRoute = require("./routes/graufilter.js")
 const farbInvertierungsRoute = require("./routes/farbinvertierung.js")
+const contrastRoute = require("./routes/contrast.js")
+const brightnessRoute = require("./routes/brightness.js")
+const rotateRoute = require("./routes/rotate.js")
+const opacityRoute = require("./routes/opacity.js")
 const BildEntwurfSpeichernRoute = require("./routes/save.js")
 const BildEntwurfLoeschenRoute = require("./routes/deleteEditDraft.js")
 
@@ -67,6 +71,10 @@ app.use("/documentation", documentationRoute);
 app.use("/sepia", sepiaRoute);
 app.use("/grau", grauFilterRoute);
 app.use("/farbinvertierung", farbInvertierungsRoute);
+app.use("/contrast", contrastRoute);
+app.use("/brightness", brightnessRoute);
+app.use("/rotate", rotateRoute);
+app.use("/opacity", opacityRoute);
 app.use("/savedraft", BildEntwurfSpeichernRoute);
 app.use("/deletedraft", BildEntwurfLoeschenRoute);
 

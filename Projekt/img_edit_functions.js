@@ -85,8 +85,110 @@ function farbinterungsFilter(imgPath){
     }); 
 }
 
+function flip(imgPath){
+    console.log("Processing Bildflip ...");
+    return new Promise((resolve, reject) => {
+        jimp.read(imgPath)
+            .then(img => {
+                const newPath = createImgSavingPath(imgPath);
+                img.flip(true, false).write(newPath); //TEST
+                resolve(newPath);
+            })
+            .catch(err => {
+                console.log(err);
+                reject();
+            })
+    })
+}
+
+function rotate(imgPath, degree){
+    console.log("Processing Rotation...");
+    return new Promise((resolve, reject) => {
+        jimp.read(imgPath)
+        .then(img => {
+            const newPath = createImgSavingPath(imgPath);
+            img.rotate(parseInt(degree)).write(newPath);
+            resolve(newPath);
+        })
+        .catch(err => {
+            console.log(err);
+            reject();
+        })
+    })
+}
+
+function contrast(imgPath, val){
+    console.log("Progessing Contrast...");
+    return new Promise((resolve, reject) => {
+        jimp.read(imgPath)
+            .then(img => {
+                const newPath = createImgSavingPath(imgPath);
+                img.contrast(parseFloat(val)).write(newPath);
+                resolve(newPath);
+            })
+            .catch(err => {
+                console.log(err);
+                reject();
+            })
+    })
+}
+
+function brightness(imgPath, val){
+    console.log("Progessing Brightness...");
+    return new Promise((resolve, reject) => {
+        jimp.read(imgPath)
+            .then(img => {
+                const newPath = createImgSavingPath(imgPath);
+                img.brightness(parseFloat(val)).write(newPath);
+                resolve(newPath);
+            })
+            .catch(err => {
+                console.log(err);
+                reject();
+            })
+    })
+}
+
+function blur(imgPath, val){
+    console.log("Progessing Blur...");
+    return new Promise((resolve, reject) => {
+        jimp.read(imgPath)
+            .then(img => {
+                const newPath = createImgSavingPath(imgPath);
+                img.blur(parseInt(val)).write(newPath);
+                resolve(newPath);
+            })
+            .catch(err => {
+                console.log(err);
+                reject();
+            })
+    })
+}
+
+function opacity(imgPath, val){
+    console.log("Progessing Opacity...");
+    return new Promise((resolve, reject) => {
+        jimp.read(imgPath)
+            .then(img => {
+                const newPath = createImgSavingPath(imgPath);
+                img.opacity(parseFloat(val)).write(newPath);
+                resolve(newPath);
+            })
+            .catch(err => {
+                console.log(err);
+                reject();
+            })
+    })
+}
+
 module.exports = {
     sepiaFilter: sepiaFilter,
     grauFilter: grauFilter,
-    farbinterungsFilter: farbinterungsFilter
+    farbinterungsFilter: farbinterungsFilter,
+    flip: flip,
+    rotate: rotate,
+    contrast: contrast,
+    brightness: brightness,
+    blur: blur,
+    opacity: opacity
 };

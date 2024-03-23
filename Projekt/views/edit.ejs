@@ -61,8 +61,8 @@
                           Deckkraft
                         </a>
                         <ul class="dropdown-menu">
-                          <li><a class="dropdown-item" href="#">Blur</a></li>
-                          <li><a class="dropdown-item" href="#">Deckkraft</a></li>
+                          <li><a class="dropdown-item" href="#" id="blur" onclick="selectSliderFormActionDestination(this)">Blur</a></li>
+                          <li><a class="dropdown-item" id="opacity" href="#" onclick="enableParamInput(this)">Deckkraft</a></li>
                         </ul>
                     </li>
 
@@ -71,8 +71,8 @@
                           Drehen
                         </a>
                         <ul class="dropdown-menu">
-                          <li><a class="dropdown-item" href="#">Flip</a></li>
-                          <li><a class="dropdown-item" href="#">Rotate</a></li>
+                          <li><a class="dropdown-item" id="flip" href="#" onclick="enableParamInput(this)">Flip</a></li>
+                          <li><a class="dropdown-item" id="rotate" href="#" onclick="enableParamInput(this)">Rotate</a></li>
                         </ul>
                     </li>
 
@@ -93,9 +93,11 @@
     <div class="container"><!--Slider-->
         <div class="row">
             <div class="collapse" id="slider">
-                <form action="">
-                    <label for="rangeSlider" class="form-label" id="formLabel"></label>
-                    <input type="range" class="form-range" min="" max="" step="" id="rangeSlider">
+                <form action="" method="POST" id="sliderForm">
+                    <label for="rangeSlider" class="form-label" id="formLabel">Test</label>
+                    <input type="range" name="sliderValue" class="form-range" min="" max="" step="" value="" id="rangeSlider" oninput="updateSliderValueDiv()">
+                    <div><p id="rangeValue"></p></div>
+                    <input type="hidden" name="imagePath" value="<%= path %>"> <!--Bild mitsenden-->
                     <input type="submit" class="btn btn-primary">
                 </form>
             </div>
