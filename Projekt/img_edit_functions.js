@@ -85,13 +85,17 @@ function farbinterungsFilter(imgPath){
     }); 
 }
 
-function flip(imgPath){
+function flip(imgPath, value){
     console.log("Processing Bildflip ...");
     return new Promise((resolve, reject) => {
         jimp.read(imgPath)
             .then(img => {
                 const newPath = createImgSavingPath(imgPath);
-                img.flip(true, false).write(newPath); //TEST
+                if(value == "1"){ //hor
+                    img.flip(true, false).write(newPath);
+                }else if(value == "2"){ //ver
+                    img.flip(false, true).write(newPath);
+                }else{}
                 resolve(newPath);
             })
             .catch(err => {

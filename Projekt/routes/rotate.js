@@ -4,7 +4,7 @@ const imgEditFunctions = require("../img_edit_functions.js");
 
 router.post("/", (req, res) => {
     var path = req.body.imagePath;
-    var value = req.body.rotationValue;
+    var value = req.body.inputFieldValue;
 
     imgEditFunctions.rotate(path, value)
     .then(imgPath => {
@@ -12,7 +12,7 @@ router.post("/", (req, res) => {
     })
     .catch(err => {
         console.log(err);
-        res.status(500).send("Es ist ein Fehler beim Kontrast aufgetreten!");
+        res.status(500).send("Es ist ein Fehler beim Drehen aufgetreten!");
     })  
 })
 

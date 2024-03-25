@@ -26,6 +26,8 @@ const contrastRoute = require("./routes/contrast.js")
 const brightnessRoute = require("./routes/brightness.js")
 const rotateRoute = require("./routes/rotate.js")
 const opacityRoute = require("./routes/opacity.js")
+const blurRoute = require("./routes/blur.js")
+const flipRoute = require("./routes/flip.js")
 const BildEntwurfSpeichernRoute = require("./routes/save.js")
 const BildEntwurfLoeschenRoute = require("./routes/deleteEditDraft.js")
 
@@ -75,6 +77,8 @@ app.use("/contrast", contrastRoute);
 app.use("/brightness", brightnessRoute);
 app.use("/rotate", rotateRoute);
 app.use("/opacity", opacityRoute);
+app.use("/blur", blurRoute);
+app.use("/flip", flipRoute);
 app.use("/savedraft", BildEntwurfSpeichernRoute);
 app.use("/deletedraft", BildEntwurfLoeschenRoute);
 

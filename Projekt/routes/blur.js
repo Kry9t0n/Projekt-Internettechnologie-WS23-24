@@ -4,9 +4,9 @@ const imgEditFunctions = require("../img_edit_functions.js");
 
 router.post("/", (req, res) => {
     var path = req.body.imagePath;
-    var value = req.body.flipDirection;
+    var value = req.body.inputFieldValue;
 
-    imgEditFunctions.flip(path, value)
+    imgEditFunctions.blur(path, value)
     .then(imgPath => {
         res.render("edit.ejs", {path: imgPath});
     })

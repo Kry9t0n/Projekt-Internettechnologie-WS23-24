@@ -61,7 +61,7 @@
                           Deckkraft
                         </a>
                         <ul class="dropdown-menu">
-                          <li><a class="dropdown-item" href="#" id="blur" onclick="selectSliderFormActionDestination(this)">Blur</a></li>
+                          <li><a class="dropdown-item" href="#" id="blur" onclick="enableInputField(this)">Blur</a></li>
                           <li><a class="dropdown-item" id="opacity" href="#" onclick="enableParamInput(this)">Deckkraft</a></li>
                         </ul>
                     </li>
@@ -71,8 +71,8 @@
                           Drehen
                         </a>
                         <ul class="dropdown-menu">
-                          <li><a class="dropdown-item" id="flip" href="#" onclick="enableParamInput(this)">Flip</a></li>
-                          <li><a class="dropdown-item" id="rotate" href="#" onclick="enableParamInput(this)">Rotate</a></li>
+                          <li><a class="dropdown-item" id="flip" href="#" onclick="enableSelectField()">Flip</a></li>
+                          <li><a class="dropdown-item" id="rotate" href="#" onclick="enableInputField(this)">Rotate</a></li>
                         </ul>
                     </li>
 
@@ -100,6 +100,39 @@
                     <input type="hidden" name="imagePath" value="<%= path %>"> <!--Bild mitsenden-->
                     <input type="submit" class="btn btn-primary">
                 </form>
+                <button class="btn btn-danger" id="removeSlider" onclick="hideSlider()">Abbrechen</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container"><!--Inputfeld-->
+        <div class="row">
+            <div class="collapse" id="inputField">
+                <form action="" method="POST" id="inputFieldForm">
+                    <label for="numberInputField" class="form-label" id="inputFieldLabel"></label>
+                    <input type="number" name="inputFieldValue" class="form-control" id="numberInputField" value="">
+                    <input type="hidden" name="imagePath" value="<%= path %>"> <!--Bild mitsenden-->
+                    <input type="submit" class="btn btn-primary">
+                </form>
+                <button class="btn btn-danger" id="removeSlider" onclick="hideInputField()">Abbrechen</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container"><!--Selectfeld-->
+        <div class="row">
+            <div class="collapse" id="selectField">
+                <form action="/flip" method="POST" id="selectFieldForm">
+                    <label for="horVerSelect" class="form-label">horizontale oder vertikale Drehung wählen: </label>
+                    <select name="flipDirection" id="horVerSelect" class="form-select form-select-sm">
+                        <option value="0">Hier wählen</option>
+                        <option value="1">horizontal</option>
+                        <option value="2">vertikal</option>
+                    </select>
+                    <input type="hidden" name="imagePath" value="<%= path %>"> <!--Bild mitsenden-->
+                    <input type="submit" class="btn btn-primary">
+                </form>
+                <button class="btn btn-danger" id="removeSlider" onclick="hideSelect()">Abbrechen</button>
             </div>
         </div>
     </div>
