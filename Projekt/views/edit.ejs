@@ -94,7 +94,7 @@
         <div class="row">
             <div class="collapse" id="slider">
                 <form action="" method="POST" id="sliderForm">
-                    <label for="rangeSlider" class="form-label" id="formLabel">Test</label>
+                    <label for="rangeSlider" class="form-label" id="formLabel"></label>
                     <input type="range" name="sliderValue" class="form-range" min="" max="" step="" value="" id="rangeSlider" oninput="updateSliderValueDiv()">
                     <div><p id="rangeValue"></p></div>
                     <input type="hidden" name="imagePath" value="<%= path %>"> <!--Bild mitsenden-->
@@ -110,9 +110,9 @@
             <div class="collapse" id="inputField">
                 <form action="" method="POST" id="inputFieldForm">
                     <label for="numberInputField" class="form-label" id="inputFieldLabel"></label>
-                    <input type="number" name="inputFieldValue" class="form-control" id="numberInputField" value="">
+                    <input type="number" name="inputFieldValue" class="form-control" id="numberInputField" value="" onchange="validateInput(this)">
                     <input type="hidden" name="imagePath" value="<%= path %>"> <!--Bild mitsenden-->
-                    <input type="submit" class="btn btn-primary">
+                    <input id="inputSubmit" type="submit" class="btn btn-primary">
                 </form>
                 <button class="btn btn-danger" id="removeSlider" onclick="hideInputField()">Abbrechen</button>
             </div>
@@ -124,13 +124,13 @@
             <div class="collapse" id="selectField">
                 <form action="/flip" method="POST" id="selectFieldForm">
                     <label for="horVerSelect" class="form-label">horizontale oder vertikale Drehung wählen: </label>
-                    <select name="flipDirection" id="horVerSelect" class="form-select form-select-sm">
+                    <select name="flipDirection" id="horVerSelect" class="form-select form-select-sm" onchange="validateInput(this)">
                         <option value="0">Hier wählen</option>
                         <option value="1">horizontal</option>
                         <option value="2">vertikal</option>
                     </select>
                     <input type="hidden" name="imagePath" value="<%= path %>"> <!--Bild mitsenden-->
-                    <input type="submit" class="btn btn-primary">
+                    <input id="selectSubmit" type="submit" class="btn btn-primary">
                 </form>
                 <button class="btn btn-danger" id="removeSlider" onclick="hideSelect()">Abbrechen</button>
             </div>

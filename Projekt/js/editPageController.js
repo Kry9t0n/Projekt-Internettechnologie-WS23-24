@@ -50,7 +50,8 @@ function enableParamInput(editFunction){
     slider.setAttribute("max", sliderMax);
     slider.setAttribute("step", sliderStepWidth);
 
-    label.setAttribute("value", desc);
+    //label.setAttribute("value", desc);
+    label.textContent = desc;
 
     // Form sichtbar machen
     sliderContainer.setAttribute("class", "");
@@ -122,6 +123,9 @@ function hideInputField(){
 
     //URL in "action"-Attribut des HTML Formulars löschen
     document.getElementById("inputFieldForm").action = "";
+
+    //mögliches disable Attribut von Submit-Button entfernen
+    document.getElementById("inputSubmit").classList.remove("disabled");
 }
 
 function hideSelect(){
@@ -130,4 +134,54 @@ function hideSelect(){
 
     //Select wieder in Ausgangszustand bringen
     document.getElementById("horVerSelect").selectedIndex = 0;
+
+    //mögliches disable Attribut von Submit-Button entfernen
+    document.getElementById("selectSubmit").classList.remove("disabled");
+}
+
+function validateInput(elem){
+    var id = elem.getAttribute("id");
+
+    switch(id){
+        case "horVerSelect":
+            horVerInputValidation(elem);
+            break;
+        case "numberInputField":
+            var route = document.getElementById("inputFieldForm").getAttribute("action");
+            if(route == "/blur"){
+                blurInputValidation(elem.value);
+            }else if(route == "/rotate"){
+                rotateInputValidation(elem.value);
+            }else{}
+            break;
+    }
+}
+
+function horVerInputValidation(elem){
+    if(elem.selectedIndex == 0){ //steht auf "Hier wählen"
+        alert("Eingabe ist ungültig. Bitte entscheiden Sie sich für eine Ausrichtung!");
+        document.getElementById("selectSubmit").classList.add("disabled")
+    }else{
+        document.getElementById("selectSubmit").classList.remove("disabled");
+    }
+}
+
+function blurInputValidation(value){
+    var button = document.getElementById("inputSubmit");
+    if(value <= 0){
+        alert("Eingabe ist ungültig! Es sind nur positive Werte erlaubt.");
+        button.classList.add("disabled");
+    }else{
+        button.classList.remove("disabled");
+    }
+}
+
+function rotateInputValidation(value){
+    var button = document.getElementById("inputSubmit");
+    if(value > 360 || value < -360){
+        alert("Eingabe ist ungültig! Es sind nur Werte im Bereich -360 - 360 Grad erlaubt!");
+        button.classList.add("disabled");
+    }else{
+        button.classList.remove("disabled");
+    }
 }
