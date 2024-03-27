@@ -38,7 +38,7 @@ app.use(
         resave: false,
         saveUninitialized: true,
         cookie: {
-            secure: false, // Beachte: Bei einer Produktionsanwendung sollte dies auf 'true' gesetzt werden, wenn HTTPS verwendet wird
+            secure: false, 
             maxAge: null, // Session-Cookie wird gelöscht, wenn der Browser geschlossen wird
         },  
     })
