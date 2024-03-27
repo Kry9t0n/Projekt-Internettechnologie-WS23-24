@@ -62,7 +62,6 @@
                         </a>
                         <ul class="dropdown-menu">
                           <li><a class="dropdown-item" href="#" id="blur" onclick="enableInputField(this)">Blur</a></li>
-                          <li><a class="dropdown-item" id="opacity" href="#" onclick="enableParamInput(this)">Deckkraft</a></li>
                         </ul>
                     </li>
 
@@ -98,7 +97,7 @@
                     <input type="range" name="sliderValue" class="form-range" min="" max="" step="" value="" id="rangeSlider" oninput="updateSliderValueDiv()">
                     <div><p id="rangeValue"></p></div>
                     <input type="hidden" name="imagePath" value="<%= path %>"> <!--Bild mitsenden-->
-                    <input type="submit" class="btn btn-primary">
+                    <input type="submit" class="btn btn-primary mt-2">
                 </form>
                 <button class="btn btn-danger" id="removeSlider" onclick="hideSlider()">Abbrechen</button>
             </div>
@@ -112,7 +111,7 @@
                     <label for="numberInputField" class="form-label" id="inputFieldLabel"></label>
                     <input type="number" name="inputFieldValue" class="form-control" id="numberInputField" value="" onchange="validateInput(this)">
                     <input type="hidden" name="imagePath" value="<%= path %>"> <!--Bild mitsenden-->
-                    <input id="inputSubmit" type="submit" class="btn btn-primary">
+                    <input id="inputSubmit" type="submit" class="btn btn-primary mt-3">
                 </form>
                 <button class="btn btn-danger" id="removeSlider" onclick="hideInputField()">Abbrechen</button>
             </div>
@@ -126,11 +125,11 @@
                     <label for="horVerSelect" class="form-label">horizontale oder vertikale Drehung wählen: </label>
                     <select name="flipDirection" id="horVerSelect" class="form-select form-select-sm" onchange="validateInput(this)">
                         <option value="0">Hier wählen</option>
-                        <option value="1">horizontal</option>
-                        <option value="2">vertikal</option>
+                        <option value="1">vertikal</option>
+                        <option value="2">horizontal</option>
                     </select>
                     <input type="hidden" name="imagePath" value="<%= path %>"> <!--Bild mitsenden-->
-                    <input id="selectSubmit" type="submit" class="btn btn-primary">
+                    <input id="selectSubmit" type="submit" class="btn btn-primary mt-3">
                 </form>
                 <button class="btn btn-danger" id="removeSlider" onclick="hideSelect()">Abbrechen</button>
             </div>
@@ -230,7 +229,7 @@
           <a href="#">Zur&uuml;ck nach oben</a>
         </p>
         <p>
-          © 2023
+          © 2024
         </p>
         <p>
           <a href="https://www.flaticon.com/de/kostenlose-icons/photoshop" title="photoshop Icons">Photoshop Icons erstellt von Smashicons - Flaticon</a>

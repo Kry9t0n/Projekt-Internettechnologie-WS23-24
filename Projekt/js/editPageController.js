@@ -33,15 +33,6 @@ function enableParamInput(editFunction){
             sliderStepWidth = 0.2;
             desc = "Kontrastwerte zwischen -1 und 1 wählen";
             break;
-        case "opacity":
-            sliderForm.setAttribute("action", "/opacity");
-
-            value = 0;
-            sliderStepWidth = 0.1;
-            sliderMin = 0;
-            sliderMax = 1;
-            desc = "Verblassung zwischen 0 und 1 wählen"
-            break;
     }
 
     // setze die Eigenschaften des Sliders

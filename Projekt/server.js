@@ -25,7 +25,7 @@ const farbInvertierungsRoute = require("./routes/farbinvertierung.js")
 const contrastRoute = require("./routes/contrast.js")
 const brightnessRoute = require("./routes/brightness.js")
 const rotateRoute = require("./routes/rotate.js")
-const opacityRoute = require("./routes/opacity.js")
+const opacityRoute = require("./routes/opacity.js") //wird in Abgabeversion nicht verwendet, weitere Info siehe ./routes/opacity.js
 const blurRoute = require("./routes/blur.js")
 const flipRoute = require("./routes/flip.js")
 const BildEntwurfSpeichernRoute = require("./routes/save.js")
@@ -76,7 +76,7 @@ app.use("/farbinvertierung", farbInvertierungsRoute);
 app.use("/contrast", contrastRoute);
 app.use("/brightness", brightnessRoute);
 app.use("/rotate", rotateRoute);
-app.use("/opacity", opacityRoute);
+app.use("/opacity", opacityRoute); //nicht weiter verwendet, siehe oben
 app.use("/blur", blurRoute);
 app.use("/flip", flipRoute);
 app.use("/savedraft", BildEntwurfSpeichernRoute);

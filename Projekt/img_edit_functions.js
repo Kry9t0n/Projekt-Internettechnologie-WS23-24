@@ -91,9 +91,10 @@ function flip(imgPath, value){
         jimp.read(imgPath)
             .then(img => {
                 const newPath = createImgSavingPath(imgPath);
-                if(value == "1"){ //hor
+
+                if(value == "1"){ //ver
                     img.flip(true, false).write(newPath);
-                }else if(value == "2"){ //ver
+                }else if(value == "2"){ //hor
                     img.flip(false, true).write(newPath);
                 }else{}
                 resolve(newPath);
@@ -169,13 +170,16 @@ function blur(imgPath, val){
     })
 }
 
+/**
+ * Funktionalität wurde aus Abgabe entfernt, da API-Funktion nicht korrekt arbeitet!
+ */
 function opacity(imgPath, val){
     console.log("Progessing Opacity...");
     return new Promise((resolve, reject) => {
         jimp.read(imgPath)
             .then(img => {
                 const newPath = createImgSavingPath(imgPath);
-                img.opacity(parseFloat(val)).write(newPath);
+                img.opacity(parseFloat(val)).write(newPath); 
                 resolve(newPath);
             })
             .catch(err => {

@@ -1,3 +1,7 @@
+/**
+ * Funktionalität wurde aus Abgabe entfernt, da zugehörige API-Funktion nicht korrekt arbeitet!
+ */
+
 const express = require("express");
 const router = express.Router();
 const imgEditFunctions = require("../img_edit_functions.js");
